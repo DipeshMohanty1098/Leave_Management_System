@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{{ url_for('static', filename = 'stylesheets/style.css')}}" rel = "stylesheet">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h3>Welcome {{users}}</h3>
+    <h3>Email: {{email}}</h3>
+    <br>
+    <br>
+    <center>
+        <table border="1%">
+            <th>Total Leaves</th>
+            <th>Remaining Leaves</th>
+            <tr>
+                <td>{{total}}</td>
+                <td>{{remaining}}</td>
+            </tr>
+        </table>
+    <br>
+    <a href="http://127.0.0.1:5000/view_applications_user"><button>Check Applied Leave Status</button></a>
+    <br>
+    <br>
+    <a href="http://127.0.0.1:5000/apply_leave"><button>Apply for a Leave</button></a>
+    <br>
+    <br>
+    <a href="http://127.0.0.1:5000/logout"><button>Logout</button></a>
+    <br>
+    </center>
+    {% with messages = get_flashed_messages() %}
+        {%if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {%endfor%}
+        {% endif %}
+    {% endwith %}
+</body>
+</html>

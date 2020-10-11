@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for leave</title>
+</head>
+<body>
+    <center>
+    <form method = 'post'>
+        <label>From:</label>
+        <input type="date" id="from" name="from" >
+        <br>
+        <br>
+        <label>To:</label>
+        <input type="date" id="to" name="to">
+        <br>
+        <br>
+        <label>Applying for (Day(s)): </label>
+        <input type="text" id="days" name="days">
+        <br>
+        <br>
+        <a href="http://127.0.0.1:5000/apply_leave"><button id="apply" disabled=true type="submit">Apply for leave</button></a>
+    </form>
+    <br>
+    <button onclick="getDates()">Calculate number of days</button>
+    <br>
+    <br>
+    
+    </center>
+    <script>
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
+        console.log(today)
+        document.getElementById("from").setAttribute("min", today);
+        document.getElementById("to").setAttribute("min", today);
+        function getDates(){
+        var to_date = new Date(document.getElementById("to").value);
+        var from_date = new Date(document.getElementById("from").value);
+        console.log(to_date);
+        console.log(from_date);
+        if (to_date == 'Invalid Date' || from_date == 'Invalid Date' ){
+            alert("Please fill all the fields");
+        }
+        else{
+        var Difference_In_Time = to_date.getTime() - from_date.getTime(); 
+        var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+        if (Difference_In_Days>28){
+            alert("Please enter dates lesser than 28 days");
+        }
+        else if(Difference_In_Days<=0){
+            alert("please enter dates properly");
+        }
+        else{
+        document.getElementById("days").setAttribute("value", Difference_In_Days+1);
+        document.getElementById("apply").removeAttribute("disabled");
+        
+        }
+        }
+        }
+    </script>
+</body>
+
+</html>

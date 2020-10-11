@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    
+    <form action="#" method = "post">
+        <label>Name:</label>
+        <input type="text" name = "name" placeholder="Enter Name" required>
+        <br>
+        <br>
+        <label>Email:</label>
+        <input type="email" name= "email" placeholder="Enter Email" required>
+        <br>
+        <br>
+        <button type="submit">Register</button>
+        
+        {% with messages = get_flashed_messages() %}
+        {%if messages %}
+            {% for msg in messages %}
+                <p><font color="red">{{msg}}</font></p>
+            {%endfor%}
+        {% endif %}
+    {% endwith %}
+    </form>
+    <br>
+    <a href="http://127.0.0.1:5000/"><button>Login</button></a>
+</body>
+</html>

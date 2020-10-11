@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table</title>
+</head>
+<body>
+<h1>All users</h1>
+    <table border="1%">
+        <th>Name</th>
+        <th>Email</th>
+        <th>id</th>
+        <th>from</th>
+        <th>to</th>
+        <th>days</th>
+        <th>action</th>
+    {% for item in values %}
+        <tr>
+            <td>{{item.name}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item._id}}</td>
+            <td>{{item.from_date}}</td>
+            <td>{{item.to_date}}</td>
+            <td>{{item.days}}</td>
+            <td><button></button></td>
+        </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>
